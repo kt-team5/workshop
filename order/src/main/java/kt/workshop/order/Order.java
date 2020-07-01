@@ -28,6 +28,7 @@ import com.google.gson.JsonParser;
 @Table(name="order_table")
 public class Order {
 
+
 	@Id	@GeneratedValue
 	Long orderId;
 	int seatId;
@@ -38,32 +39,31 @@ public class Order {
 	static int MAX_SEAT = 10;  // PC방 좌석 수
 	
 	
-	// 해당 좌석이 있는 지 확인하고, availability를 확인한다. 
-	// 해당 좌석 가능 여부를 리턴한다.
+	// 해당 좌석이 있는 지 확인하고, availability를 확인 및 처리한다. 
 	@PrePersist
     private void orderCheck(){
         RestTemplate restTemplate = OrderApplication.applicationContext.getBean(RestTemplate.class);
         Environment env = OrderApplication.applicationContext.getEnvironment();
 
-//        if( productId == null ){
-//            throw new RuntimeException();
-//        }
-//
-//         // 1. 주문에 대한 상품 조회 - API
-//        String productUrl = env.getProperty("api.url.product") + "/products/" + productId;
-//
-//        ResponseEntity<String> productEntity = restTemplate.getForEntity(productUrl, String.class);
-//        JsonParser parser = new JsonParser();
-//        JsonObject jsonObject = parser.parse(productEntity.getBody()).getAsJsonObject();
-//
-//       if( jsonObject.get("stock").getAsInt() < getQty()){
-//            throw new RuntimeException();
-//        }
+        if( seatId < 1 || seatId > MAX_SEAT ){
+            throw new RuntimeException("선택한 좌석은 없는 좌석입니다.");
+        }
+
+         // 1. 주문에 대한 해당 좌석 조회 - API
+        String seatUrl = env.getProperty("api.url.seat") + "/seats/" + seatId;
+
+        ResponseEntity<String> seatEntity = restTemplate.getForEntity(seatUrl, String.class);
+        JsonParser parser = new JsonParser();
+        JsonObject jsonObject = parser.parse(seatEntity.getBody()).getAsJsonObject();
+
+       if( jsonObject.get("occupied").getAsBoolean() == true ){
+            throw new RuntimeException("해당 좌석은 사용 중입니다.");
+        }
     }
 
 
 	@PostPersist 
-	public void eventPublish() {
+	public void postToPay() {
 		//결제 요청 post
 
         RestTemplate restTemplate = OrderApplication.applicationContext.getBean(RestTemplate.class);
@@ -82,31 +82,6 @@ public class Order {
 //        if( response.getStatusCode() == HttpStatus.CREATED){
 //
 //        }
-		
-		
-		
-//		OrderPlaced orderPlaced = new OrderPlaced();
-//		orderPlaced.setOrderId(this.getOrderId());
-//		orderPlaced.setSeatId(this.getSeatId());
-//		orderPlaced.setStart(this.getStart());
-//		orderPlaced.setTime(this.getTime());
-//		ObjectMapper objectMapper = new ObjectMapper();
-//		String json = null;
-//
-//		try {
-//			json = objectMapper.writeValueAsString(orderPlaced);
-//		} catch (JsonProcessingException e) {
-//			throw new RuntimeException("JSON format exception", e);
-//		}
-//		//System.out.println(json);
-//		
-//	    Processor processor = OrderApplication.applicationContext.getBean(Processor.class);
-//	    MessageChannel outputChannel = processor.output();
-//
-//	    outputChannel.send(MessageBuilder
-//	            .withPayload(json)
-//	            .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
-//	            .build());
 	}
 	
 	
