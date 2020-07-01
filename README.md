@@ -35,41 +35,55 @@
 ![KakaoTalk_Photo_2020-07-01-11-43-03](https://user-images.githubusercontent.com/63759241/86197291-0ca44b80-bb90-11ea-899d-56c22a6e46ab.jpeg)
 
 * MSAez Tool을 활용한 결과물 정리 :
+### 이벤트 도출
+<img width="666" alt="Screen Shot 2020-07-01 at 1 39 40 PM" src="https://user-images.githubusercontent.com/63759241/86207212-fb1b6d80-bba8-11ea-8b0e-ef5a3205f277.png">
 
+### 엑터,커맨드 부착하여 읽기 좋게
+<img width="706" alt="Screen Shot 2020-07-01 at 1 41 36 PM" src="https://user-images.githubusercontent.com/63759241/86207210-fb1b6d80-bba8-11ea-8594-7e11b968bd9d.png">
 
+### 어그리게잇 묶기
+<img width="784" alt="Screen Shot 2020-07-01 at 1 44 31 PM" src="https://user-images.githubusercontent.com/63759241/86207208-f9ea4080-bba8-11ea-8834-7627f8b81e36.png">
 
-### 1. 이벤트 도출
+### 바운디드 컨텍스트로 묶기
+<img width="948" alt="Screen Shot 2020-07-01 at 1 50 13 PM" src="https://user-images.githubusercontent.com/63759241/86207206-f9ea4080-bba8-11ea-98e2-9e9b1f9b752b.png">
 
+### 폴리시 부착
+<img width="928" alt="Screen Shot 2020-07-01 at 1 58 34 PM" src="https://user-images.githubusercontent.com/63759241/86207202-f951aa00-bba8-11ea-879a-87173f3e31ec.png">
 
-### 2. 부적격 이벤트 탈락
+### 폴리시 이동 및 정리
+<img width="955" alt="Screen Shot 2020-07-01 at 2 02 06 PM" src="https://user-images.githubusercontent.com/63759241/86207200-f8b91380-bba8-11ea-99b0-df1730635cda.png">
 
+### View 모델 추가 및 완성
+<img width="863" alt="Screen Shot 2020-07-01 at 2 37 58 PM" src="https://user-images.githubusercontent.com/63759241/86207192-f5258c80-bba8-11ea-8166-32fca87507f3.png">
 
-### 3. 엑터,커맨드 부착하여 읽기 좋게
-
-
-### 4. 어그리게잇 묶기
-
-
-### 5. 바운디드 컨텍스트로 묶기
-
-
-### 6. 폴리시 부탁
-
-
-### 7. View 모델 추가
-
-
-### 8. 검증과정
-
+'''
 
 ## 설계 대상
-- 예약 및 좌석 관리
+위의 설계를 통해 도출된 테이블은 총 세 개입니다.
+예약 관리, 결제, 좌석의 세 가지 패키지로 구성된 서비스를 개발합니다.
+
+아래의 내용을 통해 변수 정리와 각 패키지의 역할에 대해 정의합니다.
 
 
-- 결제
+### 예약 및 좌석 관리
+ - 변수 정리
+ 거래 ID : Long orderId
+ 사용 좌석 : int seatId
+ 시작 시간 : Date startTime
+ 사용량 : int usage // PC방 사용량을 뜻하며 분 단위로 구성
+ 사용 여부 : boolean occupied // True일 경우 사용중인 좌석
+
+ - 역할 정의
+ 
+
+
+### 결제
+ - 변수 정리
+ 사용 좌석 : int seatId
 
 
 -
+'''
 
 ## DDD
 
