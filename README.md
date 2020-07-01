@@ -1,4 +1,5 @@
-![image](https://user-images.githubusercontent.com/487999/79708354-29074a80-82fa-11ea-80df-0db3962fb453.png)
+![KakaoTalk_Photo_2020-07-01-11-43-03](https://user-images.githubusercontent.com/63759241/86197291-0ca44b80-bb90-11ea-899d-56c22a6e46ab.jpeg)
+
 
 # 예제 - 음식배달
 
