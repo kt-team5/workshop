@@ -19,6 +19,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Entity
 public class Seat {
+	
+	테스틑ㅌㅌㅌㅌ
 
 	@Id
     int seatId;
