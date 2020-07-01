@@ -10,9 +10,10 @@ public class PolicyHandler {
 	
 	@StreamListener(Processor.INPUT)
 	public void onSeatFinished(@Payload String seatFinished){
+		if(seatFinished.contentEquals("seatFinished")) {
 		System.out.println("========start=========");
 		System.out.println(seatFinished);
 		System.out.println("======== end =========");
-	}
+		}
 
 }
