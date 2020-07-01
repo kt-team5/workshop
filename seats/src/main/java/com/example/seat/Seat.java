@@ -19,8 +19,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Entity
 public class Seat {
 
-	@Id @GeneratedValue
-    Long id;
+//	@Id @GeneratedValue
+//    Long id;
     int seatId;
     Date startTime;
     int usage;
@@ -34,7 +34,7 @@ public class Seat {
     	System.out.println("사용 중지 버튼 클릭 event 발생");
     	
     	SeatFinished seatFinished = new SeatFinished();
-    	seatFinished.setId(this.getId());
+//    	seatFinished.setId(this.getId());
     	seatFinished.setSeatId(this.getSeatId());
     	seatFinished.setOccupied(this.isOccupied());
     	    	
@@ -58,12 +58,12 @@ public class Seat {
     }
 
 
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+//	public Long getId() {
+//		return id;
+//	}
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
 	public boolean isOccupied() {
 		return occupied;
 	}
