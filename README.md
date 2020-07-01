@@ -1,16 +1,28 @@
-# 구현 - PC방 서비스 개발
+# 개요 - PC방 서비스 개발
+본 시스템은 소상공인의 대표적인 사업 업종 중 하나인 PC방 서비스 개발을 위해 작성되었습니다.
+
+현 시스템은 기존 업주들이 PC의 사용량 관리를 위해 활용하는 POS의 대체 시스템을 개발하며 이르 온라인화하여 제공합니다.
 
 
 
+
+# 설계
+
+## DDD
 ![KakaoTalk_Photo_2020-07-01-11-43-03](https://user-images.githubusercontent.com/63759241/86197291-0ca44b80-bb90-11ea-899d-56c22a6e46ab.jpeg)
 
 
-# 예제 - 음식배달
 
-본 예제는 MSA/DDD/Event Storming/EDA 를 포괄하는 분석/설계/구현/운영 전단계를 커버하도록 구성한 예제입니다.
-이는 클라우드 네이티브 애플리케이션의 개발에 요구되는 체크포인트들을 통과하기 위한 예시 답안을 포함합니다.
-- 체크포인트 : https://workflowy.com/s/assessment-check-po/T5YrzcMewfo4J6LW
 
+
+
+# 구현 - 
+## 카프카 설정 
+- topic : pcroom
+- group : 
+ 결제 : payment
+ 좌석 : seat
+ 
 
 # Table of contents
 
