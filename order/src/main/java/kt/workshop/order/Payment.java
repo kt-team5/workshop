@@ -21,7 +21,7 @@ public class Payment {
 	
 	Long id;
 	String eventType;
-    int seatNum;
+    int seatId;
 	Date startTime;
     int usage;
 	boolean occupied;
@@ -66,12 +66,14 @@ public class Payment {
 		this.eventType = eventType;
 	}
 
-	public int getSeatNum() {
-		return seatNum;
+
+
+	public int getSeatId() {
+		return seatId;
 	}
 
-	public void setSeatNum(int seatNum) {
-		this.seatNum = seatNum;
+	public void setSeatId(int seatId) {
+		this.seatId = seatId;
 	}
 
 	public int getUsage() {
