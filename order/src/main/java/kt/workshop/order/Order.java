@@ -65,7 +65,7 @@ public class Order {
 	@PostPersist 
 	public void postToPay() {
 		//결제 요청 post
-
+		System.out.println("test");
         RestTemplate restTemplate = OrderApplication.applicationContext.getBean(RestTemplate.class);
         Environment env = OrderApplication.applicationContext.getEnvironment();
         

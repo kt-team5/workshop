@@ -26,7 +26,6 @@ public class Seat {
     int usage;
     boolean occupied;
     
-    
    // 사용 중지 버튼을 클릭
     @PostUpdate  
     public void useStopped() {
