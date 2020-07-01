@@ -71,7 +71,7 @@ public class Order {
         
         String payUrl = env.getProperty("api.url.pay");
         Payment payment = new Payment();
-        payment.setSeatNum(this.getSeatId());
+        payment.setSeatId(this.getSeatId());
         payment.setStartTime(this.getStartTime());
         payment.setUsage(this.getUsage());
         payment.setOccupied(true);
