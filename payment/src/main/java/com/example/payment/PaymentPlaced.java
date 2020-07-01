@@ -1,13 +1,41 @@
 package com.example.payment;
 
+import java.util.Date;
+
 public class PaymentPlaced {
-	String eventType;
-    Long seatNum;
-    Long usage;
+	int seatId;
+    int usage;
+    Date startTime;
+    boolean occupied;
+    String eventType;
 
     public PaymentPlaced(){
-        this.eventType = OrderPlaced.class.getSimpleName();
+        this.eventType = PaymentPlaced.class.getSimpleName();
     }
+
+	public int getSeatId() {
+		return seatId;
+	}
+
+	public void setSeatId(int seatId) {
+		this.seatId = seatId;
+	}
+
+	public int getUsage() {
+		return usage;
+	}
+
+	public void setUsage(int usage) {
+		this.usage = usage;
+	}
+
+	public Date getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
 
 	public String getEventType() {
 		return eventType;
@@ -17,20 +45,13 @@ public class PaymentPlaced {
 		this.eventType = eventType;
 	}
 
-	public Long getSeatNum() {
-		return seatNum;
+	public boolean isOccupied() {
+		return occupied;
 	}
 
-	public void setSeatNum(Long seatNum) {
-		this.seatNum = seatNum;
+	public void setOccupied(boolean occupied) {
+		this.occupied = occupied;
 	}
 
-	public Long getUsage() {
-		return usage;
-	}
-
-	public void setUsage(Long usage) {
-		this.usage = usage;
-	}
-		
+	
 }

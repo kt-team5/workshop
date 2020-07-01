@@ -1,5 +1,7 @@
 package com.example.payment;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,16 +20,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Entity
 public class Payment {
 	@Id @GeneratedValue
-	Long id;
-	String eventType;
-    Long seatNum;
-    Long usage;
+	long id;
+    int seatId;
+    int usage;
+    Date startTime;
+    boolean occupied;
+    String eventType;
 	
 	@PostPersist @PostUpdate
 	public void changeProduct() {
 		PaymentPlaced paymentPlaced = new PaymentPlaced();
-		paymentPlaced.setSeatNum(this.getSeatNum());
+		paymentPlaced.setSeatId(this.getSeatId());
 		paymentPlaced.setUsage(this.getUsage());
+		paymentPlaced.setStartTime(this.getStartTime());
+		paymentPlaced.setOccupied(this.isOccupied());
 	    ObjectMapper objectMapper = new ObjectMapper();
 	    String json = null;
 
@@ -48,12 +54,44 @@ public class Payment {
 	    System.out.print("Payment class:"+json);
 	}
 
-	public Long getId() {
+	public boolean isOccupied() {
+		return occupied;
+	}
+
+	public void setOccupied(boolean occupied) {
+		this.occupied = occupied;
+	}
+
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
+	}
+
+	public int getSeatId() {
+		return seatId;
+	}
+
+	public void setSeatId(int seatId) {
+		this.seatId = seatId;
+	}
+
+	public int getUsage() {
+		return usage;
+	}
+
+	public void setUsage(int usage) {
+		this.usage = usage;
+	}
+
+	public Date getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
 	}
 
 	public String getEventType() {
@@ -64,21 +102,7 @@ public class Payment {
 		this.eventType = eventType;
 	}
 
-	public Long getSeatNum() {
-		return seatNum;
-	}
 
-	public void setSeatNum(Long seatNum) {
-		this.seatNum = seatNum;
-	}
-
-	public Long getUsage() {
-		return usage;
-	}
-
-	public void setUsage(Long usage) {
-		this.usage = usage;
-	}
 	
 	
 	
