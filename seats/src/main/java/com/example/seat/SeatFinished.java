@@ -5,7 +5,7 @@ import java.util.Date;
 public class SeatFinished {
 
 	String eventType;
-    Long id;
+//    Long id;
     int seatId;
     Date startTime;
     int usage;
@@ -20,12 +20,12 @@ public class SeatFinished {
 	public void setEventType(String eventType) {
 		this.eventType = eventType;
 	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+//	public Long getId() {
+//		return id;
+//	}
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
 	public int getSeatId() {
 		return seatId;
 	}
