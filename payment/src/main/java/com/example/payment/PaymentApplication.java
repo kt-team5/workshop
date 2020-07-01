@@ -14,4 +14,10 @@ public class PaymentApplication {
 		applicationContext = SpringApplication.run(PaymentApplication.class, args);
 	}
 
+	@StreamListener(Processor.INPUT)
+	public void onEventByString(){
+		
+	}
+	
+	
 }
