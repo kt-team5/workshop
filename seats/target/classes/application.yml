@@ -1,0 +1,22 @@
+server:
+  port: 8082
+
+spring:
+  profiles: default
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        input:
+          group: seats
+          destination: pcroom
+          contentType: application/json
+        output:
+          destination: pcroom
+          contentType: application/json
+
+#api:
+#  url:
+#    reserve: http://localhost:8081
