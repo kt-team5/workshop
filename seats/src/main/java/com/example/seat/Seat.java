@@ -38,7 +38,8 @@ public class Seat {
     		System.out.println("사용 중지 버튼 클릭 event 발생");
     		
     		seatFinished.setSeatId(this.getSeatId());
-    		seatFinished.setUsage(this.getUsage());
+    		seatFinished.setUsage(0);				// 초기화
+    		seatFinished.setStartTime(null);		// 초기화
     		seatFinished.setOccupied(this.isOccupied());
     		
     		ObjectMapper objectMapper = new ObjectMapper();
