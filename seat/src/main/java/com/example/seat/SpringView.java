@@ -47,21 +47,21 @@ public class SpringView {
 	
 	//@PostMapping("/setInfo")
 	@GetMapping("/setInfo")
-	public String setSeatInfo(String seatId,int usage,String occupied) {
+	public String setSeatInfo(String seatId,int usages,String occupied) {
 		try {
 			Seat p = new Seat();
 	    	
-	     	System.out.println("======== setSeatInfo() ======="+seatId+"/"+usage);
+	     	System.out.println("======== setSeatInfo() ======="+seatId+"/"+usages);
 	     	if(occupied.equals("true")) {
 		    	p.setOccupied(true);
-		    	p.setUsage(usage);
+		    	p.setUsages(usages);
 		    	p.setSeatId(Integer.parseInt(seatId));
 		    	seatRepository.save(p);
 		    	return "SUCCESS";
 	     	}
 	     	else {
 	     		p.setOccupied(false);
-		    	p.setUsage(0);
+		    	p.setUsages(0);
 		    	p.setSeatId(Integer.parseInt(seatId));
 		    	seatRepository.save(p);
 		    	return "SUCCESS";
@@ -88,7 +88,7 @@ public class SpringView {
 //	p.setName(orderCancelled.getProductName());
 //	p.setStock( p.getStock() + orderCancelled.getQty());
 //	productRepository.save(p);
-//	System.out.println("getUsage"+p.getUsage());
+//	System.out.println("getUsages"+p.getUsages());
 //	System.out.println("======= end ========");
 //}
 //SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d yyyy : HH:mm:ss:SSS z");
