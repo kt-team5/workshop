@@ -1,5 +1,11 @@
 package kt.workshop.order;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -38,10 +44,17 @@ public class Order {
 	
 	static int MAX_SEAT = 10;  // PC방 좌석 수
 	
+	Order() {
+		startTime = new Date();
+	}
 	
 	// 해당 좌석이 있는 지 확인하고, availability를 확인 및 처리한다. 
 	@PrePersist
     private void orderCheck(){
+		
+		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+		System.out.println("========="+format1.format(startTime));
+		
         RestTemplate restTemplate = OrderApplication.applicationContext.getBean(RestTemplate.class);
         Environment env = OrderApplication.applicationContext.getEnvironment();
 
@@ -49,15 +62,31 @@ public class Order {
             throw new RuntimeException("선택한 좌석은 없는 좌석입니다.");
         }
 
-         // 1. 주문에 대한 해당 좌석 조회 - API
+        // 1. 주문에 대한 해당 좌석 조회 - API
         String seatUrl = env.getProperty("api.url.seat") + "/seats/" + seatId;
+        boolean available = true;
+        try {
+	        URL url = new URL(seatUrl);
+	        URLConnection con = url.openConnection();
+	        HttpURLConnection exitCode = (HttpURLConnection)con;
+	        System.out.println("========= exitCode.getResponseCode() "+exitCode.getResponseCode());
+	        if(exitCode.getResponseCode() == 200) {
+	        	
+			    ResponseEntity<String> seatEntity = restTemplate.getForEntity(seatUrl, String.class);
+			    JsonParser parser = new JsonParser();
+			    JsonObject jsonObject = parser.parse(seatEntity.getBody()).getAsJsonObject();
+			    
+				if( jsonObject.get("occupied").getAsBoolean() == true ){
+					available = false;
+				}
+	        }
 
-        ResponseEntity<String> seatEntity = restTemplate.getForEntity(seatUrl, String.class);
-        JsonParser parser = new JsonParser();
-        JsonObject jsonObject = parser.parse(seatEntity.getBody()).getAsJsonObject();
-
-       if( jsonObject.get("occupied").getAsBoolean() == true ){
-            throw new RuntimeException("해당 좌석은 사용 중입니다.");
+        } catch (Exception e){
+          	e.printStackTrace(); 
+            //throw e; //최상위 클래스가 아니라면 무조건 던져주자
+        } finally {
+	        if(available == false)
+	        	throw new RuntimeException("해당 좌석은 사용 중입니다.");
         }
     }
 
@@ -65,14 +94,15 @@ public class Order {
 	@PostPersist 
 	public void postToPay() {
 		//결제 요청 post
-		System.out.println("test");
+		System.out.println("=================test");
         RestTemplate restTemplate = OrderApplication.applicationContext.getBean(RestTemplate.class);
         Environment env = OrderApplication.applicationContext.getEnvironment();
         
         String payUrl = env.getProperty("api.url.pay");
         Payment payment = new Payment();
         payment.setSeatId(this.getSeatId());
-        payment.setStartTime(this.getStartTime());
+        //payment.setStartTime(this.getStartTime());
+        payment.setStartTime(new Date());
         payment.setUsage(this.getUsage());
         payment.setOccupied(true);
        
@@ -172,3 +202,4 @@ public class Order {
 	}
 	
 }
+
