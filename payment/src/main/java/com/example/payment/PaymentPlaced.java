@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class PaymentPlaced {
 	int seatId;
-    int usage;
+    int usages;
     Date startTime;
     boolean occupied;
     String eventType;
@@ -21,12 +21,12 @@ public class PaymentPlaced {
 		this.seatId = seatId;
 	}
 
-	public int getUsage() {
-		return usage;
+	public int getUsages() {
+		return usages;
 	}
 
-	public void setUsage(int usage) {
-		this.usage = usage;
+	public void setUsages(int usages) {
+		this.usages = usages;
 	}
 
 	public Date getStartTime() {
