@@ -23,7 +23,7 @@ public class Payment {
 	String eventType;
     int seatId;
 	Date startTime;
-    int usage;
+    int usages;
 	boolean occupied;
 	
 	public void changeProduct() {
@@ -76,12 +76,12 @@ public class Payment {
 		this.seatId = seatId;
 	}
 
-	public int getUsage() {
-		return usage;
+	public int getUsages() {
+		return usages;
 	}
 
-	public void setUsage(int usage) {
-		this.usage = usage;
+	public void setUsages(int usages) {
+		this.usages = usages;
 	}
 
 	public Date getStartTime() {
