@@ -8,7 +8,7 @@ public class OrderPlaced {
 	Long orderId;
 	int seatId;
 	Date startTime;
-	int usage;  //minutes
+	int usages;  //minutes
 	boolean occupied;
 	
 	public OrderPlaced() {
@@ -47,12 +47,12 @@ public class OrderPlaced {
 		this.startTime = startTime;
 	}
 
-	public int getUsage() {
-		return usage;
+	public int getUsages() {
+		return usages;
 	}
 
-	public void setUsage(int usage) {
-		this.usage = usage;
+	public void setUsages(int usages) {
+		this.usages = usages;
 	}
 
 	public boolean isOccupied() {
