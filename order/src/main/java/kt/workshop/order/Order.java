@@ -39,7 +39,7 @@ public class Order {
 	Long orderId;
 	int seatId;
 	Date startTime;
-	int usage;  //minutes
+	int usages;  //minutes
 	boolean occupied;
 	
 	static int MAX_SEAT = 10;  // PC방 좌석 수
@@ -103,7 +103,7 @@ public class Order {
         payment.setSeatId(this.getSeatId());
         //payment.setStartTime(this.getStartTime());
         payment.setStartTime(new Date());
-        payment.setUsage(this.getUsage());
+        payment.setUsages(this.getUsages());
         payment.setOccupied(true);
        
         //Res 가 필요한 경우 응답 받음
@@ -182,13 +182,13 @@ public class Order {
 	}
 
 
-	public int getUsage() {
-		return usage;
+	public int getUsages() {
+		return usages;
 	}
 
 
-	public void setUsage(int usage) {
-		this.usage = usage;
+	public void setUsages(int usages) {
+		this.usages = usages;
 	}
 
 
