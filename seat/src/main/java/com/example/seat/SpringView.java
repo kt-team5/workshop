@@ -51,12 +51,13 @@ public class SpringView {
 		try {
 			Seat p = new Seat();
 	    	
-	     	System.out.println("======== setSeatInfo() ======="+seatId+"/"+usages);
+	     	
 	     	if(occupied.equals("true")) {
 		    	p.setOccupied(true);
 		    	p.setUsages(usages);
 		    	p.setSeatId(Integer.parseInt(seatId));
 		    	seatRepository.save(p);
+		    	System.out.println("1 ======== setSeatInfo() ======="+seatId+"/"+usages+"/"+occupied);
 		    	return "SUCCESS";
 	     	}
 	     	else {
@@ -64,6 +65,7 @@ public class SpringView {
 		    	p.setUsages(0);
 		    	p.setSeatId(Integer.parseInt(seatId));
 		    	seatRepository.save(p);
+		    	System.out.println("2 ======== setSeatInfo() ======="+seatId+"/"+usages+"/"+occupied);
 		    	return "SUCCESS";
 	     	}
      	}

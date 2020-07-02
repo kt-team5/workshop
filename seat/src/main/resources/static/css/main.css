@@ -29,13 +29,13 @@ ul{
 
 .silderdemo img {
     width: 100%;
-    height:200px;
+    height:260px;
 }
 
 
 
 .pie_progress {
-    width: 160px;
+    width: 125px;
     margin: 10px auto;
   }
   @media all and (max-width: 768px) {
@@ -49,17 +49,149 @@ ul{
 }
 .asPieProgressRow {
     /* float:left; */
-    border-radius: 20px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
     display: block;
-    width: 95%;
-    height: 200px;
+    width: 99%;
+    height: 170px;
     margin:0;
-    margin-left:20px;
+    margin-top:5px;
+    margin-left:5px;
     padding: 0;
-    border: 1px lightgray solid;
+    border: 2px red solid;
 }
 .asPieProgressRow  > div {
     float:left;
     margin:10px;
 }
 
+#progress_box{
+	margin-top:-60px;
+	padding:0;
+	display: block;
+	width: 99%;
+    height: 200px;
+	/*border: 2px red solid;
+	position: absolute;
+	top:210px;*/
+}
+.pie_progress__content{
+	font-size:40px;
+}
+.seatstatus{
+	font-size:30px;
+	margin:2px;
+	margin-left:10px;
+	padding:3px;
+	background-color:red;
+	border-radius: 10px 10px 10px 10px;
+}
+
+.timesetform {
+	width: 50px;
+    height: 20px;
+}
+.shoptitle{
+	background-color:white;
+	color:white;
+	width: 100%;
+    height: 60px;
+}
+.shoptitle_sub1{
+	font-size:30px;
+	display : block;
+	float:left;
+	width:300px;
+	height:40px;
+	background-color:white;
+	margin-top:2px;
+	padding:5px;
+	padding-left:50px;
+	color:red;
+	font-weight: bold;
+	border-top: 3px solid red;
+	border-left: 30px solid red;
+	border-bottom: 3px solid red;
+	
+}
+.shoptitle_sub2{
+	margin:10px;
+	margin-top:20px;
+	padding-left: 20px;
+	font-size:15px;
+	width:70px;
+	color:blue;
+	font-weight: bold;
+	display : block;
+	float:right;
+	border-left: 2px solid red;
+	}
+.shoptitle_sub3{
+	margin:10px;
+	margin-top:20px;
+	padding-left: 20px;
+	width:70px;
+	font-size:15px;
+	color:blue;
+	font-weight: bold;
+	display : block;
+	float:right;
+	border-left: 2px solid red;
+}
+
+
+.snackbar{
+	margin-top:20px;
+	width:100%;
+	height:120px;
+	padding:5px;
+	background-color:white;
+	font-size:45px;
+	color:blue;
+	font-weight: bold;
+}
+.snackbar > div {
+	margin:3px;
+	margin-top:10px;
+	padding:5px;
+	width: 100px;
+	height: 100px;
+	float:left;
+	display:block;
+	border-radius: 10px 10px 10px 10px;
+	border: 1px lightgray solid;
+	
+}
+.snackbar > div img{
+	width: 100px;
+	height: 100px;
+}
+
+.color_yellow{
+	background-color:yellow;
+}
+.snackbar{
+  position:absolute;
+  left:1px;
+  width:100%;
+  height:50px;
+  margin-left:-50px;
+  background-color:#000;
+  color:#fff;
+  /* 애니메이션 이름 */
+  animation-name: jaehee;
+  animation-duration:5s;
+    animation-duration: leaner;
+  animation-iteration-count:3000;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+
+/* 키프레임 이름 = 애니메이션 이름 */
+@-webkit-keyframes jaehee {
+  0% {
+    left:100px;
+  }
+  100% {
+    left:300px;
+  }
+}
