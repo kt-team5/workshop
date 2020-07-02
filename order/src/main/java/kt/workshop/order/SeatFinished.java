@@ -7,7 +7,7 @@ public class SeatFinished {
     Long id;
     int seatId;
     Date startTime;
-    int usage;
+    int usages;
     boolean occupied;
 	
 	public SeatFinished() {
@@ -37,11 +37,11 @@ public class SeatFinished {
 	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}
-	public int getUsage() {
-		return usage;
+	public int getUsages() {
+		return usages;
 	}
-	public void setUsage(int usage) {
-		this.usage = usage;
+	public void setUsages(int usages) {
+		this.usages = usages;
 	}
 	public boolean isOccupied() {
 		return occupied;
