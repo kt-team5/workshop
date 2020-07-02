@@ -65,13 +65,13 @@
 아래의 내용을 통해 변수 정리와 각 패키지의 역할에 대해 정의합니다.
 
 
-### 예약 및 좌석 관리
+### 예약 및 좌석 관리 시스템
  - 변수 정리
- 거래 ID : Long orderId;
- 사용 좌석 : int seatId;
- 시작 시간 : Date startTime;
- 사용량 : int usage // PC방 사용량을 뜻하며 분 단위로 구성;
- 사용 여부 : boolean occupied // True일 경우 사용중인 좌석;
+   - 거래 ID : Long orderId;
+   - 사용 좌석 : int seatId;
+   - 시작 시간 : Date startTime;
+   - 사용량 : int usage // PC방 사용량을 뜻하며 분 단위로 구성;
+   - 사용 여부 : boolean occupied // True일 경우 사용중인 좌석;
 
  - 역할 정의
  
@@ -79,9 +79,19 @@
 
 ### 결제
  - 변수 정리
- 사용 좌석 : int seatId
+   - 결제 ID : long id;
+   - 사용 좌석 : int seatId;
+   - 사용량 : int usage;
+   - 시작 시간 : Date startTime;
+   - 사용 여부 :boolean occupied;
+   - String eventType;
 
-
+### 좌석
+ - 변수 정리
+   - 사용 좌석 : int seatId;
+   - 사용량 : int usage;
+   - 시작 시간 : Date startTime;
+   - 사용 여부 :boolean occupied;
 -
 '''
 
