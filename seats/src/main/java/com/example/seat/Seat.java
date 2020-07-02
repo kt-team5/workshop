@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.PostPersist;
 import javax.persistence.PostUpdate;
+import javax.persistence.Table;
 
 import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.messaging.MessageChannel;
@@ -18,6 +19,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Entity
+@Table(name="seat_table")
 public class Seat {
 
 	@Id
@@ -28,13 +30,9 @@ public class Seat {
     
    // 사용 중지 버튼을 클릭
     @PostUpdate  
-    public void useStopped() {
-    	System.out.println("이벤트탈까요 안탈까요");
-    
+    public void useStopped() {    
     	SeatFinished seatFinished = new SeatFinished();
 
-
-    	if(this.isOccupied() == false) {
     		// 사용 중지 버튼 클릭 event 발생
 
     		System.out.println("사용 중지 버튼 클릭 event 발생");
@@ -61,11 +59,7 @@ public class Seat {
     				.build());
     		
     		System.out.print("Seat class:"+json);
-
-    	}else {
-    		System.out.println("좌석 occupied 값"+this.isOccupied());
-    	}
-    	
+   	
     
     }
 
