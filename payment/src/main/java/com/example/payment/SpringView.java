@@ -56,21 +56,21 @@ public class SpringView {
 	
 	//@PostMapping("/setInfo")
 	@GetMapping("/setInfo")
-	public String setSeatInfo(String seatId,int usage,String occupied) {
+	public String setSeatInfo(String seatId,int usages,String occupied) {
 		try {
 	    	Payment p = new Payment();
 	    	
-	     	System.out.println("======== setSeatInfo() ======="+seatId+"/"+usage);
+	     	System.out.println("======== setSeatInfo() ======="+seatId+"/"+usages);
 	     	if(occupied.equals("true")) {
 		    	p.setOccupied(true);
-		    	p.setUsage(usage);
+		    	p.setUsages(usages);
 		    	p.setSeatId(Integer.parseInt(seatId));
 		    	paymentRepository.save(p);
 		    	return "SUCCESS";
 	     	}
 	     	else {
 	     		p.setOccupied(false);
-		    	p.setUsage(0);
+		    	p.setUsages(0);
 		    	p.setSeatId(Integer.parseInt(seatId));
 		    	paymentRepository.save(p);
 		    	return "SUCCESS";
