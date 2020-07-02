@@ -22,7 +22,7 @@ public class Payment {
 	@Id @GeneratedValue
 	private long id;
 	private int seatId;
-	private int usage;
+	private int usages;
 	private Date startTime;
 	private boolean occupied;
 	private String eventType;
@@ -31,7 +31,7 @@ public class Payment {
 	public void changeProduct() {
 		PaymentPlaced paymentPlaced = new PaymentPlaced();
 		paymentPlaced.setSeatId(this.getSeatId());
-		paymentPlaced.setUsage(this.getUsage());
+		paymentPlaced.setUsages(this.getUsages());
 		paymentPlaced.setStartTime(this.getStartTime());
 		paymentPlaced.setOccupied(this.isOccupied());
 	    ObjectMapper objectMapper = new ObjectMapper();
@@ -78,12 +78,12 @@ public class Payment {
 		this.seatId = seatId;
 	}
 
-	public int getUsage() {
-		return usage;
+	public int getUsages() {
+		return usages;
 	}
 
-	public void setUsage(int usage) {
-		this.usage = usage;
+	public void setUsages(int usages) {
+		this.usages = usages;
 	}
 
 	public Date getStartTime() {
