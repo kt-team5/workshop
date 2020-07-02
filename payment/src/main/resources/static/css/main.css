@@ -1,0 +1,65 @@
+body{
+    background-color: black;
+}
+
+ul{
+    list-style: none outside none;
+    padding-left: 0;
+    margin: 0;
+}
+.silderdemo .item{
+    margin-bottom: 60px;
+}
+.content-slider li{
+    background-color: #ed3020;
+    text-align: center;
+    color: #FFF;
+}
+.content-slider h3 {
+    margin: 0;
+    padding: 70px 0;
+    
+}
+ .silderdemo{
+    margin: 0;
+    padding: 0;
+    /* border: 1px gray solid; */
+    width: 100%;
+} 
+
+.silderdemo img {
+    width: 100%;
+    height:200px;
+}
+
+
+
+.pie_progress {
+    width: 160px;
+    margin: 10px auto;
+  }
+  @media all and (max-width: 768px) {
+    .pie_progress {
+      width: 80%;
+      max-width: 300px;
+    }
+}
+.pie_progress__number ,.pie_progress__content {
+    color : white;
+}
+.asPieProgressRow {
+    /* float:left; */
+    border-radius: 20px 10px 10px 10px;
+    display: block;
+    width: 95%;
+    height: 200px;
+    margin:0;
+    margin-left:20px;
+    padding: 0;
+    border: 1px lightgray solid;
+}
+.asPieProgressRow  > div {
+    float:left;
+    margin:10px;
+}
+

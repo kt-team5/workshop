@@ -20,12 +20,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Entity
 public class Payment {
 	@Id @GeneratedValue
-	long id;
-    int seatId;
-    int usage;
-    Date startTime;
-    boolean occupied;
-    String eventType;
+	private long id;
+	private int seatId;
+	private int usage;
+	private Date startTime;
+	private boolean occupied;
+	private String eventType;
 	
 	@PostPersist @PostUpdate
 	public void changeProduct() {

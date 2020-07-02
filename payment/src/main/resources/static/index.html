@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<head>
+  <title>게임방</title>
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  <link rel="stylesheet" type="text/css" href="./css/lightslider.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/pienormalize.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/asPieProgress.css"/>
+  
+   <!--  <link rel="stylesheet" type="text/css" href="./css/jquery.fancybox-1.3.4.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./css/fancystyle.css" />-->
+  <link rel="stylesheet" type="text/css" href="./css/main.css"/>
+
+  <!-- <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script> -->
+  <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+  <script type="text/javascript" src="./script/jquery-2.0.3.js"></script>
+  <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
+  <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+  <script type="text/javascript" src="./script/lightslider.js"></script> <!-- �뒳�씪�씠�뱶�눥 �씪�씠釉뚮윭由�-->
+  <script type="text/javascript" src="./script/jquery-asPieProgress.js"></script> <!-- �뙆�씠洹몃옒�봽-->
+  
+
+
+  <script type="text/javascript" src="./script/init_main.js"></script>
+  <script type="text/javascript" src="./script/init_slider.js"></script> 
+  <script type="text/javascript" src="./script/init_pieprogess.js"></script> 
+  <!-- <script type="text/javascript" src="./script/jquery.mousewheel-3.0.4.pack.js"></script> -->
+  <!-- <script type="text/javascript" src="./script/jquery.fancybox-1.3.4.js"></script> -->
+  
+  
+
+  <script>
+    $(document).ready(function(){
+        init_srcipt();
+    });
+  </script>
+
+  
+</head>
+<body>
+
+    <h1 style="text-align:center; color:white;">게임방 좌석예약</h1>
+    <div class="silderdemo">
+        <div class="item">            
+            <div class="clearfix" style="max-width:1440px;">
+                <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+                    <li data-thumb="./images/thumb/battleground1.png"> 
+                        <img src="./images/battleground1.png" />
+                        </li>
+                    <li data-thumb="./images/thumb/battleground2.jpg"> 
+                        <img src="./images/battleground2.jpg" />
+                        </li>
+                    <li data-thumb="./images/thumb/startctaft1.jpg"> 
+                        <img src="./images/startctaft1.jpg" />
+                        </li>
+                </ul>
+            </div>
+        </div>
+    </div>	
+    <section> 
+        <h2 style="text-align:center; color:white;">좌석별 이용상태 및 잔여시간</h2>
+        <div >
+                <form>
+			      <select id="timeset">
+			        <option value="60">60분예약</option>
+			        <option value="100">100분</option>
+			        <option value="30">30분</option>
+			        <option value="90">90분</option>
+			        <option value="80">80분</option>
+			      </select>
+			    </form>
+		</div>
+        <section>
+          <div class="asPieProgressRow" >
+            <div id ="progress0" class="pie_progress" role="progressbar" data-goal="33" data-barsize="10" seatId="1">
+                <span style="text-align:center; color:white; font-size: 20px;">1번좌석</span>
+              <div class="pie_progress__number">0분</div>
+              <div class="pie_progress__label">New Clients</div>
+              <button id ="0" class ="pie_button">예약</button>
+            </div>
+            <div id ="progress1"  class="pie_progress" role="progressbar" data-goal="33" data-barsize="10" seatId="2">
+                <span style="text-align:center; color:white; font-size: 20px;">2번좌석</span>
+                <div class="pie_progress__number">0분</div>
+                <div class="pie_progress__label">New Clients</div>
+                <button id ="1" class ="pie_button">예약</button>
+            </div>
+            <div id ="progress2"  class="pie_progress" role="progressbar" data-goal="33" data-barsize="10" seatId="3">
+                <span style="text-align:center; color:white; font-size: 20px;">3번좌석</span>
+                <div class="pie_progress__number">0분</div>
+                <div class="pie_progress__label">New Clients</div>
+                <button id ="2" class ="pie_button">예약</button>
+            </div>
+            <div id ="progress3"  class="pie_progress" role="progressbar" data-goal="33" data-barsize="10" seatId="4">
+                <span style="text-align:center; color:white; font-size: 20px;">4번좌석</span>
+                  <div class="pie_progress__number">0분</div>
+                  <div class="pie_progress__label">New Clients</div>
+                  <button id ="3" class ="pie_button">예약</button>
+            </div>
+            <div id ="progress4"  class="pie_progress" role="progressbar" data-goal="33" data-barsize="10" seatId="5">
+                <span style="text-align:center; color:white; font-size: 20px;">5번좌석</span>
+                <div class="pie_progress__number">0분</div>
+                <div class="pie_progress__label">New Clients</div>
+                <button id ="4" class ="pie_button">예약</button>
+            </div>
+            <div id ="progress5"  class="pie_progress" role="progressbar" data-goal="33" data-barsize="10" seatId="6">
+                <span style="text-align:center; color:white; font-size: 20px;">6번좌석</span>
+                  <div class="pie_progress__number">0분</div>
+                  <div class="pie_progress__label">New Clients</div>
+                  <button id ="5" class ="pie_button">예약</button>
+            </div>
+            <div id ="progress6"  class="pie_progress" role="progressbar" data-goal="33" data-barsize="10" seatId="7">
+                <span style="text-align:center; color:white; font-size: 20px;">7번좌석</span>
+                <div class="pie_progress__number">0분</div>
+                <div class="pie_progress__label">New Clients</div>
+                <button id ="6" class ="pie_button">예약</button>
+            </div>
+            <div id ="progress7" class="pie_progress" role="progressbar" data-goal="33" data-barsize="10" seatId="8">
+                <span style="text-align:center; color:white; font-size: 20px;">8번좌석</span>
+                  <div class="pie_progress__number">0분</div>
+                  <div class="pie_progress__label">New Clients</div>
+                  <button id ="7" class ="pie_button">예약</button>
+            </div>
+          </div>
+        </section>
+      </section>
+      <!-- <div>
+        <button id="button_start">start()</button>
+        <button id="button_stop">stop()</button>
+        <button id="button_go">go('50')</button>
+        <button id="button_go_percentage">go('50%')</button>
+        <button id="button_finish">finish()</button>
+        <button id="button_reset">reset()</button>
+      </div> -->
+</body>
+</html>
