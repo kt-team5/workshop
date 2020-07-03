@@ -49,7 +49,7 @@ public class Order {
 	}
 	
 	// 해당 좌석이 있는 지 확인하고, availability를 확인 및 처리한다. 
-	@PrePersist
+/*	@PrePersist
     private void orderCheck(){
 		
 		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
@@ -89,7 +89,7 @@ public class Order {
 	        	throw new RuntimeException("해당 좌석은 사용 중입니다.");
         }
     }
-
+*/
 
 	@PostPersist 
 	public void postToPay() {
