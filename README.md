@@ -282,20 +282,20 @@ public interface SeatRepository extends PagingAndSortingRepository<Seat, Integer
 ```
 - 적용 후 REST API 의 테스트
 
-# order 서비스의 좌석 예약 처리
+### order 서비스의 좌석 예약 처리
 ```
 http localhost:8081/orders seatId=1 usages=100 occupied=true 
 ```
 ![image](https://user-images.githubusercontent.com/63759370/86439210-1b7f2f80-bd43-11ea-9eb6-53102cd78fbb.png)
 
 
-# payment 서비스에서 결제 정보 확인
+### payment 서비스에서 결제 정보 확인
 ```
 http localhost:8086/payments/2
 ```
 ![image](https://user-images.githubusercontent.com/63759370/86439361-68fb9c80-bd43-11ea-82f8-8a571ba41e5d.png)
 
-# 좌석(좌석1번) 상태 확인
+### 좌석(좌석1번) 상태 확인
 ```
 http localhost:8082/seats/1
 ```
