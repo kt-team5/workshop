@@ -76,7 +76,8 @@
 
 
 ## 헥사고날 아키텍처 다이어그램 도출
-![image](https://user-images.githubusercontent.com/63759370/86439846-4ae26c00-bd44-11ea-98ac-942cf3062d5f.png)
+![image](https://user-images.githubusercontent.com/63759370/86440311-3488e000-bd45-11ea-8f03-f0b452c1a41f.png)
+
 
 
 ## 설계 대상
