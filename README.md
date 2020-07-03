@@ -349,6 +349,7 @@ spring:
 ```
 
 - DB 연결
+![image](https://user-images.githubusercontent.com/63759370/86432080-90e20480-bd31-11ea-9e7e-ccca6539270f.png)
 
 
 ## Gateway 적용
