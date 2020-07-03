@@ -177,16 +177,16 @@ ul{
   margin-left:-50px;
   background-color:#000;
   color:#fff;
-  /* ¾Ö´Ï¸ŞÀÌ¼Ç ÀÌ¸§ */
+  /* ì• ë‹ˆë©”ì´ì…˜ ì´ë¦„ */
   animation-name: jaehee;
-  animation-duration:5s;
+  animation-duration:4s;
     animation-duration: leaner;
-  animation-iteration-count:3000;
+  animation-iteration-count:10;
     animation-direction:alternate;
     animation-fill-mode: forwards;
 }
 
-/* Å°ÇÁ·¹ÀÓ ÀÌ¸§ = ¾Ö´Ï¸ŞÀÌ¼Ç ÀÌ¸§ */
+/* í‚¤í”„ë ˆì„ ì´ë¦„ = ì• ë‹ˆë©”ì´ì…˜ ì´ë¦„ */
 @-webkit-keyframes jaehee {
   0% {
     left:100px;
