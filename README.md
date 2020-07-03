@@ -127,7 +127,198 @@
 |||취소에 따른 보상 트랜잭션을 설계하였는가(Saga Pattern)||
 |||하나이상의 데이터 소스에서 데이터를 프로젝션하는 아키텍처가 보이는가?(CQRS)||
 
-# 구현 -
+# 구현:
+
+분석/설계 단계에서 도출된 MSA는 총 3개로 아래와 같다. 
+
+|MSA|기능|Port|조회 API|
+|:---:|:---:|:--:|:---------------:|
+|Order|PC방 좌석 예약 및 관리|8081|http://localhost:8081/orders|
+|Payment|결제 관리|8086|http://localhost:8086/payments|
+|Seat|PC방 각 좌석 관리|8082|http://localhost:8082/seats|
+
+## DDD 의 적용
+
+- 각 서비스내에 도출된 핵심 Aggregate Root 객체를 Entity 로 선언하였다: (예시는 Seat 마이크로 서비스). 이때 가능한 현업에서 사용하는 언어 (유비쿼터스 랭귀지)를 그대로 사용하려고 노력했다. 하지만, 일부 구현에 있어서 영문이 아닌 경우는 실행이 불가능한 경우가 있기 때문에 계속 사용할 방법은 아닌것 같다. (Maven pom.xml, Kafka의 topic id, FeignClient 의 서비스 id 등은 한글로 식별자를 사용하는 경우 오류가 발생하는 것을 확인하였다)
+
+```
+package com.example.seat;
+
+import java.util.Date;
+import java.util.Optional;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.PostPersist;
+import javax.persistence.PostUpdate;
+import javax.persistence.Table;
+
+import org.springframework.cloud.stream.messaging.Processor;
+import org.springframework.messaging.MessageChannel;
+import org.springframework.messaging.MessageHeaders;
+import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.util.MimeTypeUtils;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@Entity
+@Table(name="seat_table")
+public class Seat {
+
+	@Id
+    int seatId;
+    Date startTime;
+    int usages;
+    boolean occupied;
+    
+   // 사용 중지 버튼을 클릭
+    @PostUpdate  
+    public void useStopped() {
+    	System.out.println("이벤트탈까요 안탈까요");
+    	
+    	if(this.isOccupied() == false) {
+    		// 사용 중지 버튼 클릭 event 발생
+    		// this 좌석을 데이터 테이블에서 삭제하도록...
+			SeatRepository seatRepository = SeatApplication.applicationContext.getBean(SeatRepository.class);
+	    	seatRepository.deleteById(this.getSeatId());
+
+    		System.out.println("사용 중지 버튼 클릭 event 발생");
+    	}else {
+    		System.out.println("좌석 occupied 값"+this.isOccupied());
+    	}
+    }
+
+    // 각 seat의 time expire 여부 체크
+    public void checkTimer() {
+    	
+    	if(isOccupied() == false) {
+    		return;
+    	}
+
+		Date currentTime = new Date();
+		long diff = currentTime.getTime() - getStartTime().getTime();
+		int min = (int)(diff / 60000);
+		System.out.println("====="+min+"분 지남");
+		
+		// 사용시간 만료됨
+		if(min >= getUsages()) {
+			System.out.println("====="+min+" 지남"+"사용시간 "+getUsages());
+			SeatRepository seatRepository = SeatApplication.applicationContext.getBean(SeatRepository.class);
+			
+	    	seatRepository.deleteById(this.getSeatId());
+		}
+    }
+    
+	public boolean isOccupied() {
+		return occupied;
+	}
+	public void setOccupied(boolean occupied) {
+		this.occupied = occupied;
+	}
+	public int getSeatId() {
+		return seatId;
+	}
+	public void setSeatId(int seatId) {
+		this.seatId = seatId;
+	}
+	public Date getStartTime() {
+		return startTime;
+	}
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+	public int getUsages() {
+		return usages;
+	}
+	public void setUsages(int usages) {
+		this.usages = usages;
+	}
+  
+}
+
+
+```
+- Entity Pattern 과 Repository Pattern 을 적용하여 JPA 를 통하여 다양한 데이터소스 유형 (RDB or NoSQL) 에 대한 별도의 처리가 없도록 데이터 접근 어댑터를 자동 생성하기 위하여 SpringData REST 의 RestRepository 를 적용하였다
+```
+package com.example.seat;
+
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+public interface SeatRepository extends PagingAndSortingRepository<Seat, Integer> {
+}
+
+```
+- 적용 후 REST API 의 테스트
+```
+# seat 서비스의 좌석 예약 처리
+http localhost:8081/seats seatId=1 usages=100 occupied=true 
+
+# payment 서비스의 결제 처리
+http localhost:8086/payments seatId=1 usages=100 occupied=true eventType=PaymentPlaced
+
+# 좌석 상태 확인
+http localhost:8082/seats/1
+
+```
+
+
+## 폴리글랏 퍼시스턴스
+
+Seat 서비스만 Mysql을 사용하였다. pom.xml, application.yml 를 통해 데이터베이스 제품의 설정을 적용하였다.
+
+
+- pom.xml에 mysql dependency 적용
+```
+ 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+<!-- 			
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>				
+ -->		
+
+```
+
+- application.yml에 db 설정
+```
+spring:
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL57Dialect
+  datasource:
+    url: jdbc:mysql://localhost:3306/mysql?serverTimezone=Asia/Seoul
+    username: root
+    password: root12345
+    driverClassName: com.mysql.cj.jdbc.Driver
+```
+
+## Gateway 적용
+```
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+      
+      
+      
+```
+
 ## 카프카 설정
 - topic : pcroom
 - group :
