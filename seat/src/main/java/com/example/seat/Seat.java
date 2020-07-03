@@ -27,6 +27,7 @@ public class Seat {
     int seatId;
     Date startTime;
     int usages;
+    int times;
     boolean occupied;
     
    // 사용 중지 버튼을 클릭
@@ -86,13 +87,19 @@ public class Seat {
 		long diff = currentTime.getTime() - getStartTime().getTime();
 		int min = (int)(diff / 60000); // 몇 분이 지났는가
 //		int min = (int)(diff / 1000); // 몇 초 지났는가 : 시험용
-		System.out.println("====="+min+"분 지남");
+		// 남은 시간 1분 줄어듬
+		--times;
+		SeatRepository seatRepository = SeatApplication.applicationContext.getBean(SeatRepository.class);
+		Optional<Seat> seatById = seatRepository.findById(this.getSeatId());
+		Seat s = seatById.get();
+		s.setTimes(times);
+		seatRepository.save(s);
 		
+		System.out.println("===== 좌석번호 "+seatId+"  "+min+"분 지남 "+ times+"분 남음");
 		
 		// 사용시간 만료됨
-		if(min >= getUsages()) {
+		if(min > (getUsages() -1) ) {
 			System.out.println("====="+min+" 지남"+"사용시간 "+getUsages());
-			SeatRepository seatRepository = SeatApplication.applicationContext.getBean(SeatRepository.class);
 			
 	    	seatRepository.deleteById(this.getSeatId());
 		}
@@ -124,7 +131,13 @@ public class Seat {
 	public void setUsages(int usages) {
 		this.usages = usages;
 	}
-    
 
+	public int getTimes() {
+		return times;
+	}
+
+	public void setTimes(int times) {
+		this.times = times;
+	}
 	
 }
