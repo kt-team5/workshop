@@ -264,6 +264,12 @@ http localhost:8082/seats/1
 ```
 ![image](https://user-images.githubusercontent.com/63759370/86439482-99433b00-bd43-11ea-8f82-fd9a60a9f4ec.png)
 
+### Web UI 상태 확인
+```
+http://localhost:8082/index.html
+```
+![image](https://user-images.githubusercontent.com/63759306/86443918-eaa2f880-bd4a-11ea-9111-99725218cd8a.png)
+
 
 ## 폴리글랏 프로그래밍
 
