@@ -208,7 +208,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Table(name="seat_table")
 public class Seat {
 
-	@Id
+    @Id
     int seatId;
     Date startTime;
     int usages;
@@ -366,12 +366,10 @@ spring:
 
 ## UI 구현
 - order 서비스 : PC방 자리 예약 및 취소, 사용 가능 시간 표출
-
+![image](https://user-images.githubusercontent.com/63759370/86432426-9d1a9180-bd32-11ea-97ac-020daaa39063.png)
 
 - seat 서비스 : 각 PC방 자리 화면으로 현재 기준 사용 가능 시간 표출
-
-
-- store 서비스 : PC방 내 매점 주문 서비스
+![image](https://user-images.githubusercontent.com/63759370/86432460-c89d7c00-bd32-11ea-85ea-c3bfcc312650.png)
 
 
 
