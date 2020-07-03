@@ -7,8 +7,7 @@
 
 # Table of contents
 
-- "PC방 서비스"
-  - [서비스 시나리오](#서비스-시나리오)
+- [서비스 시나리오](#서비스-시나리오)
   - [요구사항 구현 결과](#요구사항-구현-결과)
   - [설계](#설계)
   - [구현](#구현-)
@@ -21,6 +20,8 @@
     - [동기식 호출 / 서킷 브레이킹 / 장애격리](#동기식-호출-서킷-브레이킹-장애격리)
     - [오토스케일 아웃](#오토스케일-아웃)
     - [무정지 재배포](#무정지-재배포)
+
+
 
 ## 서비스 시나리오
 
@@ -87,7 +88,7 @@
    - 거래 ID : Long orderId;
    - 사용 좌석 : int seatId;
    - 시작 시간 : Date startTime;
-   - 사용량 : int usage // PC방 사용량을 뜻하며 분 단위로 구성;
+   - 사용량 : int usages // PC방 사용량을 뜻하며 분 단위로 구성;
    - 사용 여부 : boolean occupied // True일 경우 사용중인 좌석;
 
  - 역할 정의
@@ -98,7 +99,7 @@
  - 변수 정리
    - 결제 ID : long id;
    - 사용 좌석 : int seatId;
-   - 사용량 : int usage;
+   - 사용량 : int usages;
    - 시작 시간 : Date startTime;
    - 사용 여부 :boolean occupied;
    - String eventType;
@@ -106,7 +107,7 @@
 ### 좌석
  - 변수 정리
    - 사용 좌석 : int seatId;
-   - 사용량 : int usage;
+   - 사용량 : int usages;
    - 시작 시간 : Date startTime;
    - 사용 여부 :boolean occupied;
 -
@@ -165,6 +166,7 @@
 |||모니터링, 앨럿팅:||
 ||무정지 운영 CI/CD|Readiness Probe 의 설정과 Rolling update을 통하여 신규 버전이 완전히 서비스를 받을 수 있는 상태일때 신규버전의 서비스로 전환됨을 siege 등으로 증명||
 |||Contract Test : 자동화된 경계 테스트를 통하여 구현 오류나 API 계약위반를 미리 차단 가능한가?||
+
 
 # 구현
 
@@ -367,6 +369,11 @@ spring:
 
 - store 서비스 : PC방 내 매점 주문 서비스
 
+
+# DB 연결
+
+
+
 ## 카프카 설정
 - topic : pcroom
 - group :
@@ -377,6 +384,8 @@ spring:
 
 
 
+
+# 운영
 
 
 
