@@ -383,7 +383,38 @@ spring:
 
 
 # 운영
+- KT 5team은 아래와 같은 아키텍처로 서비스를 구현하였습니다.
+<img width="902" alt="Screen Shot 2020-07-03 at 5 10 23 PM" src="https://user-images.githubusercontent.com/63759241/86447290-196f9d80-bd50-11ea-8b00-ec1f6b966acd.png">
 
-## CI/CD 설정
+
+## cicd설정
 각 구현체들은 각자의 source repository 에 구성되었고, pipeline build script 는 각 프로젝트 폴더 이하에 cloudbuild.yml 에 포함되었다.
+
+### Github
+ - 코드에 대한 일관성을 위해 깃허브를 사용합니다. 
+ - 각 프로젝트를 별도로 구성하여 3개의 서비스와 1개의 Gateway를 구성하였습니다.
+ - 내부적인 작업 환경을 위해 Workshop 이라는 이름으로 별도로 레파지토리를 만들었습니다.
+![Screen Shot 2020-07-03 at 3 38 33 PM](https://user-images.githubusercontent.com/63759241/86439294-46698380-bd43-11ea-9778-bbf87f0f4450.png)
+
+### AWS Pipeline 
+ - CICD 환경 구성을 위해 AWS Pipeline을 구성합니다.
+ - ECR 레파지토리를 각 서비스별로 구성하여 4개를 만들었습니다.
+![Screen Shot 2020-07-03 at 3 42 41 PM](https://user-images.githubusercontent.com/63759241/86439608-dc9da980-bd43-11ea-8c68-ecb0e0d8e350.png)
+
+
+### S3 Cache 
+ - 아래와 같이 S3를 이용하여 캐시를 구성하면 AWS Pipeline을 통해 조금 더 빠른 Build-up이 가능합니다.
+![CICD S3 아티팩트](https://user-images.githubusercontent.com/63759241/86439082-cb07d200-bd42-11ea-8e27-cdcdf5701340.png)
+
+
+# 결과
+## 결과물 
+ - 모바일 
+![IMG_1667 2](https://user-images.githubusercontent.com/63759241/86447896-f7c2e600-bd50-11ea-9848-1617b82b7cc5.jpg)
+
+ - UI 간식 주문
+ ![Screen Shot 2020-07-03 at 4 48 58 PM](https://user-images.githubusercontent.com/63759241/86447118-d4e40200-bd4f-11ea-9898-d4b19e641538.png)
+
+ - UI 기본 화면
+ ![Screen Shot 2020-07-03 at 4 49 12 PM](https://user-images.githubusercontent.com/63759241/86447130-d7def280-bd4f-11ea-96d6-2376edfee76b.png)
 
