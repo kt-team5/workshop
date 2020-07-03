@@ -113,6 +113,54 @@ public class Order {
 //
 //        }
 	}
+
+	public Long getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
+	}
+
+	public int getSeatId() {
+		return seatId;
+	}
+
+	public void setSeatId(int seatId) {
+		this.seatId = seatId;
+	}
+
+	public Date getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+
+	public int getUsages() {
+		return usages;
+	}
+
+	public void setUsages(int usages) {
+		this.usages = usages;
+	}
+
+	public boolean isOccupied() {
+		return occupied;
+	}
+
+	public void setOccupied(boolean occupied) {
+		this.occupied = occupied;
+	}
+
+	public static int getMAX_SEAT() {
+		return MAX_SEAT;
+	}
+
+	public static void setMAX_SEAT(int mAX_SEAT) {
+		MAX_SEAT = mAX_SEAT;
+	}
 	
 	
 //	@PostUpdate 
@@ -153,53 +201,6 @@ public class Order {
 //		}
 //	}
 
-	public Long getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(Long orderId) {
-		this.orderId = orderId;
-	}
-
-
-	public int getSeatId() {
-		return seatId;
-	}
-
-
-	public void setSeatId(int seatId) {
-		this.seatId = seatId;
-	}
-
-
-	public Date getStartTime() {
-		return startTime;
-	}
-
-
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
-
-
-	public int getUsages() {
-		return usages;
-	}
-
-
-	public void setUsages(int usages) {
-		this.usages = usages;
-	}
-
-
-	public boolean isOccupied() {
-		return occupied;
-	}
-
-
-	public void setOccupied(boolean occupied) {
-		this.occupied = occupied;
-	}
 	
 }
 

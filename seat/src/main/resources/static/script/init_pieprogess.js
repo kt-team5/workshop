@@ -61,7 +61,7 @@ function start_pieprogress(){
     		  return;
     	  }
     	  btnnum = $(this).attr('id');
-    	  var qry = './setInfo?seatId='+btnnum+'&usages='+$(".timesetform").val();
+    	  var qry = 'http://localhost:8081/setInfo?seatId='+btnnum+'&usages='+$(".timesetform").val();
     	  if($('#'+btnnum).text() == "예약") qry = qry +'&occupied=true';
     	  else qry = qry +'&occupied=false';
           $.get(qry,function(data){
