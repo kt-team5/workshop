@@ -111,7 +111,7 @@
    - 시작 시간 : Date startTime;
    - 사용 여부 :boolean occupied;
    - 남은 시간 : int times
-'''
+
 
 ## DDD
 
@@ -348,6 +348,9 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
 ```
 
+- DB 연결
+
+
 ## Gateway 적용
 ```
 spring:
@@ -370,7 +373,7 @@ spring:
 - store 서비스 : PC방 내 매점 주문 서비스
 
 
-# DB 연결
+
 
 
 
