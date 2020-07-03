@@ -15,7 +15,7 @@
     - [폴리글랏 프로그래밍](#폴리글랏-프로그래밍)
     - [Gateway 적용](#Gateway-적용)
     - [UI 구현](#UI-구현)
-  - [운영](#운영)
+  - [운영](#쿠버네티스운영)
     - [CI/CD 설정](#cicd설정)
   - [결과물](#결과물)
     - [모바일](#무정지-재배포)
@@ -120,13 +120,24 @@
 
 # 구현
 
-분석/설계 단계에서 도출된 MSA는 총 3개로 아래와 같다. 
+로컬 환경에서 분석/설계 단계에서 도출된 MSA는 총 3개로 아래와 같다. 
 
 |MSA|기능|Port|조회 API|
 |:---:|:---:|:--:|:---------------:|
 |Order|PC방 좌석 예약 및 관리|8081|http://localhost:8081/orders|
 |Payment|결제 관리|8086|http://localhost:8086/payments|
 |Seat|PC방 각 좌석 관리|8082|http://localhost:8082/seats|
+
+
+Kubernetes 환경에서 분석/설계 단계에서 도출된 MSA는 총 3개로 아래와 같다. 
+
+|MSA|기능|Port|조회 API|
+|:---:|:---:|:--:|:---------------:|
+|gateway|게이트웨이|8080|http://gateway5:8080/orders|
+|Order|PC방 좌석 예약 및 관리|8080|http://order5:8080/orders|
+|Payment|결제 관리|8080|http://payment5:8080/payments|
+|Seat|PC방 각 좌석 관리|8080|http://seat5:8080/seats|
+
 
 ## DDD의 적용
 
@@ -380,7 +391,7 @@ spring:
 
 
 
-# 운영
+# 쿠버네티스 운영
 - KT 5team은 아래와 같은 아키텍처로 서비스를 구현하였습니다.
 <img width="902" alt="Screen Shot 2020-07-03 at 5 10 23 PM" src="https://user-images.githubusercontent.com/63759241/86447290-196f9d80-bd50-11ea-8b00-ec1f6b966acd.png">
 
