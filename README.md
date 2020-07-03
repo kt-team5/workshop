@@ -339,9 +339,19 @@ spring:
       
 ```
 
+## UI 구현
+- order 서비스 : PC방 자리 예약 및 취소, 사용 가능 시간 표출
+
+
+- seat 서비스 : 각 PC방 자리 화면으로 현재 기준 사용 가능 시간 표출
+
+
+- store 서비스 : PC방 내 매점 주문 서비스
+
 ## 카프카 설정
 - topic : pcroom
 - group :
+ 예약 : order
  결제 : payment
  좌석 : seat
 
