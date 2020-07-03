@@ -71,7 +71,7 @@
 <img width="955" alt="Screen Shot 2020-07-01 at 2 02 06 PM" src="https://user-images.githubusercontent.com/63759241/86207200-f8b91380-bba8-11ea-99b0-df1730635cda.png">
 
 ### View 모델 추가 및 완성
-![image](https://user-images.githubusercontent.com/63759370/86442205-60599500-bd48-11ea-8069-e734b88c94f3.png)
+![image](https://user-images.githubusercontent.com/63759370/86445194-ee377f00-bd4c-11ea-85ff-d58137c9020e.png)
 
 
 ## 헥사고날 아키텍처 다이어그램 도출
