@@ -110,7 +110,7 @@
    - 사용량 : int usages;
    - 시작 시간 : Date startTime;
    - 사용 여부 :boolean occupied;
--
+   - 남은 시간 : int times
 '''
 
 ## DDD
