@@ -23,6 +23,7 @@ public class PolicyHandler {
 			seat.setSeatId(paymentPlaced.getSeatId());
 			seat.setStartTime(paymentPlaced.getStartTime());
 			seat.setUsages(paymentPlaced.getUsages());
+			seat.setTimes(paymentPlaced.getUsages());
 			seat.setOccupied(true);
 			seatRepository.save(seat);
 
