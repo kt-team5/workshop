@@ -63,7 +63,7 @@ function start_pieprogress(){
     	  btnnum = $(this).attr('id');
    	  
     	  var qry = '';
-    	  if($('#'+btnnum).text() == "예약") qry = qry + 'http://localhost:8081/setInfo?seatId='+btnnum+'&usages='+$(".timesetform").val()+'&occupied=true';
+    	  if($('#'+btnnum).text() == "예약") qry = qry + 'http://a8e79f8f6554f4a6dafd521deda414ac-1614864804.ap-northeast-1.elb.amazonaws.com:8080/orders/setInfo?seatId='+btnnum+'&usages='+$(".timesetform").val()+'&occupied=true';
     	  else qry = qry + './setInfo?seatId='+btnnum+'&usages='+$(".timesetform").val()+'&occupied=flase';
           $.get(qry,function(data){
         	  if(data != 'SUCCESS'){
