@@ -419,14 +419,16 @@ spring:
 # 결과
 ## 결과물
  - 쿠버네티스 서비스 운영 현황
- - 아래와 같이 Loadbalancer IP를 가진 게이트웨이를 통해 3개의 서비스가 각각 연결되어있습니다.
+ - 아래와 같이 Loadbalancer IP를 가진 게이트웨이를 통해 3개의 클러스터 IP를 가진 세 개의 서비스가 각각 연결되어있습니다.
   
  ![Screen Shot 2020-07-03 at 4 40 58 PM](https://user-images.githubusercontent.com/63759241/86448159-58eab980-bd51-11ea-80df-3868a4decf32.png)
  
  - 모바일 
-![IMG_1667 2](https://user-images.githubusercontent.com/63759241/86447896-f7c2e600-bd50-11ea-9848-1617b82b7cc5.jpg)
+  아래의 그림과 같이 사장님의 개인 디바이스에서도 동작이 잘 되며 확인이 가능하다느 사실으 알 수 있다.
+![Screen Shot 2020-07-03 at 5 26 48 PM](https://user-images.githubusercontent.com/63759241/86448907-65234680-bd52-11ea-81a7-83b930db33d2.png)
 
  - UI 간식 주문
+   추가로 간식 주문 환경을 구성할 수 있다.
  ![Screen Shot 2020-07-03 at 4 48 58 PM](https://user-images.githubusercontent.com/63759241/86447118-d4e40200-bd4f-11ea-9898-d4b19e641538.png)
 
  - UI 기본 화면
