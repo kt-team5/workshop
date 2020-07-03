@@ -126,7 +126,7 @@
 |||이벤트와 폴리시를 연결하기 위한 Correlation-key 연결을 제대로 설계하였는가?||
 |||취소에 따른 보상 트랜잭션을 설계하였는가(Saga Pattern)||
 |||하나이상의 데이터 소스에서 데이터를 프로젝션하는 아키텍처가 보이는가?(CQRS)||
-|구현|[DDD] 분석단계에서의 스티커별 색상과 헥사고날 아키텍처에 따라 구현체가 매핑되게 개발되었는가?|Entity Pattern 과 Repository Pattern 을 적용하여 JPA 를 통하여 데이터 접근 어댑터를 개발하였는가|○|
+|구현|[DDD] 분석단계에서의 스티커별 색상과 헥사고날 아키텍처에 따라 구현체가 매핑되게 개발되었는가?|Entity Pattern 과 Repository Pattern 을 적용하여 JPA 를 통하여 데이터 접근 어댑터를 개발하였는가(#ddd의-적용)|○|
 |||[헥사고날 아키텍처] REST Inbound adaptor 이외에 gRPC 등의 Inbound Adaptor 를 추가함에 있어서 도메인 모델의 손상을 주지 않고 새로운 프로토콜에 기존 구현체를 적응시킬 수 있는가?||
 |||분석단계에서의 유비쿼터스 랭귀지 (업무현장에서 쓰는 용어) 를 사용하여 소스코드가 서술되었는가?|○|
 ||Request-Response 방식의 서비스 중심 아키텍처 구현|마이크로 서비스간 Request-Response 호출에 있어 대상 서비스를 어떠한 방식으로 찾아서 호출 하였는가? (Service Discovery, REST, FeignClient)||
@@ -157,7 +157,7 @@
 |Payment|결제 관리|8086|http://localhost:8086/payments|
 |Seat|PC방 각 좌석 관리|8082|http://localhost:8082/seats|
 
-## DDD 의 적용
+## DDD의 적용
 
 - 각 서비스내에 도출된 핵심 Aggregate Root 객체를 Entity 로 선언하였다: (예시는 Seat 마이크로 서비스). 이때 가능한 현업에서 사용하는 언어 (유비쿼터스 랭귀지)를 그대로 사용하려고 노력했다. 하지만, 일부 구현에 있어서 영문이 아닌 경우는 실행이 불가능한 경우가 있기 때문에 계속 사용할 방법은 아닌것 같다. (Maven pom.xml, Kafka의 topic id, FeignClient 의 서비스 id 등은 한글로 식별자를 사용하는 경우 오류가 발생하는 것을 확인하였다)
 
